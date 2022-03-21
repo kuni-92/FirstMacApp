@@ -9,19 +9,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var text: String = ""
+    @State private var textEnglish: String = ""
+    @State private var textJapanese: String = ""
     var body: some View {
         VStack {
             HStack {
-                Text("Text editor")
+                Text("翻訳ツール")
                     .padding()
                 Spacer()
-                Button("Save", action: {})
+                Button("実行", action: {})
                     .padding()
             }
-            TextEditor(text: $text)
+
+            // 英語表示エリア
+            HStack {
+                Text("英語")
+                    .font(.title2)
+                    .frame(width: 50)
+                TextEditor(text: $textEnglish)
+                    .border(.blue)
+            }
+            .frame(height: 50)
+            .padding()
+
+            Image(systemName: "arrow.down")
+                .font(.title3)
+
+            // 日本語表示エリア
+            HStack {
+                Text("日本語")
+                    .font(.title2)
+                    .frame(width: 50)
+                TextEditor(text: $textJapanese)
+                    .border(.blue)
+            }
+            .frame(height: 50)
+            .padding()
         }
-        .frame(width: 500, height: 500)
+        .frame(width: 300)
     }
 }
 
