@@ -9,41 +9,46 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var textEnglish: String = ""
-    @State private var textJapanese: String = ""
+    @State private var beforeText: String = ""
+    @State private var afterText: String = ""
     var body: some View {
         VStack {
             HStack {
-                Text("翻訳ツール")
-                    .padding()
+                Text("変換ツール")
+                    .padding(.leading)
                 Spacer()
                 Button("実行", action: {})
-                    .padding()
+                    .padding(.trailing)
             }
+            .frame(height: 30, alignment: .center)
 
-            // 英語表示エリア
-            HStack {
-                Text("英語")
+            // 変換元エリア
+            VStack(alignment: .leading) {
+                Text("変換元")
                     .font(.title2)
-                    .frame(width: 50)
-                TextEditor(text: $textEnglish)
+                    .foregroundColor(.blue)
+                TextEditor(text: $beforeText)
                     .border(.blue)
             }
-            .frame(height: 50)
+            .frame(height: 100)
             .padding()
 
             Image(systemName: "arrow.down")
-                .font(.title3)
+                .resizable()
+                .renderingMode(.template)
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(.green)
+                .frame(width: 64, height: 64)
 
-            // 日本語表示エリア
-            HStack {
-                Text("日本語")
+            // 変換結果エリア
+            VStack(alignment: .leading) {
+                Text("変換先")
                     .font(.title2)
-                    .frame(width: 50)
-                TextEditor(text: $textJapanese)
+                    .foregroundColor(.red)
+                TextEditor(text: $afterText)
                     .border(.blue)
             }
-            .frame(height: 50)
+            .frame(height: 100)
             .padding()
         }
         .frame(width: 300)
