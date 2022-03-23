@@ -13,15 +13,6 @@ struct ContentView: View {
     @State private var afterText: String = ""
     var body: some View {
         VStack {
-            HStack {
-                Text("変換ツール")
-                    .padding(.leading)
-                Spacer()
-                Button("実行", action: {})
-                    .padding(.trailing)
-            }
-            .frame(height: 30, alignment: .center)
-
             // 変換元エリア
             VStack(alignment: .leading) {
                 Text("変換元")
@@ -50,6 +41,10 @@ struct ContentView: View {
             }
             .frame(height: 100)
             .padding()
+
+            // 変換ボタン
+            ConvertButton()
+                .padding()
         }
         .frame(width: 300)
     }
