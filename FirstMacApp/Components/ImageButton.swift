@@ -8,17 +8,20 @@
 
 import SwiftUI
 
-struct ConvertButton: View {
+struct ImageButton: View {
+    var systemName: String
+    var text: String
+
     var body: some View {
         Button(action: {
-            print("Clicked Convert button!")
+            print("Clicked button!")
         }) {
             VStack {
-                Image(systemName: "play")
+                Image(systemName: systemName)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 30, height: 30)
-                Text("Convert")
+                Text(text)
             }
             .frame(width: 100, height: 100)
         }
@@ -26,8 +29,8 @@ struct ConvertButton: View {
     }
 }
 
-struct ConvertButton_Previews: PreviewProvider {
+struct ImageButton_Previews: PreviewProvider {
     static var previews: some View {
-        ConvertButton()
+        ImageButton(systemName: "play", text: "play")
     }
 }

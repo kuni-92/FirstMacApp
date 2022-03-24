@@ -42,9 +42,18 @@ struct ContentView: View {
             .frame(height: 100)
             .padding()
 
-            // 変換ボタン
-            ConvertButton()
-                .padding()
+            HStack {
+                // 変換ボタン
+                ImageButton(systemName: "play", text: "convert")
+                    .padding()
+                    .border(.gray)
+                // 設定ボタン
+                ImageButton(systemName: "gear", text: "setting")
+                    .padding()
+                    .border(.gray)
+
+            }
+            .padding()
         }
         .frame(width: 300)
     }
